@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <title>inkFrame</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            margin: 0;
+            background: linear-gradient(to right, #002c65, #5b004c);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+
+            background: linear-gradient(to right, #002c65, #5b004c);
+
+        }
+
+
+
+        .navbar-brand img {
+            height: 40px;
+            width: auto;
+        }
+
+        .typewriter-bootstrap {
+            position: relative;
+            display: inline-block;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.5rem;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 8.234ch;
+            min-height: 40px;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                border-color: #fff;
+            }
+
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        .rightbuttons {
+            margin-right: 60px;
+        }
+
+        .hero-section {
+            position: relative;
+            padding: 60px 0;
+        }
+
+        .hero-content {
+            max-width: 580px;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1.2;
+        }
+
+        .hero-subtext {
+            font-size: 1rem;
+            margin: 15px 0;
+        }
+
+        .start-btn {
+            background: linear-gradient(90deg, #5b5eff, #d81f60);
+            border: none;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .start-btn:hover {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+            transform: scale(1.05);
+        }
+
+        .rocket-img {
+            width: 100%;
+            max-width: 380px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .cloud {
+            position: absolute;
+            background: #ffffff;
+            border-radius: 50%;
+            opacity: 0.2;
+        }
+
+        .cloud1 {
+            width: 100px;
+            height: 100px;
+            bottom: 0;
+            right: 50px;
+        }
+
+        .cloud2 {
+            width: 120px;
+            height: 120px;
+            bottom: 20px;
+            right: 130px;
+        }
+
+        .cloud3 {
+            width: 80px;
+            height: 80px;
+            bottom: 10px;
+            right: 200px;
+        }
+
+        .service-card {
+            background: #043472;
+            color: white;
+            border-radius: 20px;
+            padding: 20px 15px;
+            margin-top: 30px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+        }
+
+        .icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .chat-widget {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            background: #fff;
+            color: #000;
+            border-radius: 10px;
+            padding: 8px 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1055;
+        }
+
+        .chat-widget.hidden {
+            display: none !important;
+        }
+
+        .close-chat {
+            font-size: 16px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .modal-content {
+            background-color: #043472;
+            color: white;
+        }
+
+        .modal-header,
+        .modal-footer {
+            border: none;
+        }
+
+        .custom-container {
+            max-width: 840px;
+        }
+
+        @media (max-width: 770px) {
+            .service-card {
+                padding: 15px 12px;
+                font-size: 0.85rem;
+                border-radius: 15px;
+                margin-top: 20px;
+                y: 10;
+
+            }
+
+
+            .service-card .icon {
+                font-size: 28px;
+                margin-bottom: 8px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtext {
+                font-size: 0.9rem;
+            }
+
+            .start-btn {
+                padding: 6px 16px;
+                font-size: 0.9rem;
+            }
+
+            .rocket-img {
+                max-width: 260px;
+            }
+
+            .typewriter-bootstrap {
+                font-size: 1.2rem;
+            }
+
+            .chat-widget {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg px-3 py-1">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2 text-white" href="#">
+                <img src="/assets/favicon.png" alt="Logo">
+                <span class="typewriter-bootstrap" id="typewriter"></span>
+            </a>
+            <button class="navbar-toggler text-light" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarMain">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between px-2" id="navbarMain">
+                <ul class="navbar-nav me-4 mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link text-white fw-semibold" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white fw-semibold" href="#">All Stories</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white fw-semibold" href="#"
+                            data-bs-toggle="dropdown">Genres</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Sci-Fi</a></li>
+                            <li><a class="dropdown-item" href="#">Donghua</a></li>
+                            <li><a class="dropdown-item" href="#">Fantasy</a></li>
+                            <li><a class="dropdown-item" href="#">Cyberpunk</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link text-white fw-semibold" href="#">Authors</a></li>
+                    <li class="nav-item"><a class="nav-link text-white fw-semibold" href="#">About</a></li>
+                </ul>
+                <div class="rightbuttons d-flex gap-2 mx-lg-auto">
+                    <a href="#" class="btn btn-outline-light rounded-pill px-4">Log In</a>
+                    <a href="#" class="btn rounded-pill px-3 fw-semibold text-white"
+                        style="background: linear-gradient(90deg, #5982c5, #cf4f6b);">READ BLOGS</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <div class="container-fluid hero-section">
+        <div class="container custom-container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-6 col-md-7 hero-content">
+                    <p class="mb-2">INKFRAME — WHERE BLOGGING MEETS STORYTELLING</p>
+                    <h1 class="hero-title">inkFrame <br> Your Discovery</h1>
+                    <p class="hero-subtext">Step into a universe of deep stories, cosmic theories, and immersive Donghua
+                        experiences. Your gateway fantasy world..</p>
+                    <button class="start-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">START
+                        EXPOLRE</button>
+                </div>
+                <div class="col-lg-5 col-md-5 text-center">
+                    <img src="/assets/img.png" alt="Rocket Astronaut" class="rocket-img">
+                </div>
+            </div>
+
+            <div class="row text-center pt-4">
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="icon">📖</div>
+                        <h5><b>STORIES</b></h5>
+                        <p>Captivating tales that blend emotion, imagination, and mystery — from character-driven
+                            journeys to epic adventures.Each story leaves a lasting echo in the hearts of its viewers.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="icon">🌌</div>
+                        <h5><b>SCI_FIC</b></h5>
+                        <p>Exploring futuristic tech, alternate realities, and speculative worlds where science meets
+                            storytelling.From distant galaxies to AI-driven futures, the possibilities are endless.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="icon">🎭</div>
+                        <h5><b>ANIME</b></h5>
+                        <p>Diving deep into the art, culture, and impact of anime—from legendary classics to fresh
+                            seasonal gems.We celebrate the emotion, artistry, and timeless influence of the medium.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
+    </div>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <span>Hello! How can I help you?</span>
+        <span class="close-chat" id="closeChat">&times;</span>
+    </div>
+
+    <!-- Start Project Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Get Started</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3"><label class="col-form-label">Name:</label><input type="text"
+                                class="form-control" id="name"></div>
+                        <div class="mb-3"><label class="col-form-label">Email:</label><input type="email"
+                                class="form-control" id="email"></div>
+                        <div class="mb-3"><label class="col-form-label">Message:</label><textarea class="form-control"
+                                id="message"></textarea></div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Modal -->
+    <div class="modal fade" id="chatModal" tabindex="-1" aria-labelledby="chatModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="chatModalLabel">Chat with us</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>We are here to help you with any questions or concerns you may have.</p>
+                    <form>
+                        <div class="mb-3"><textarea class="form-control" id="chatMessage" rows="5"></textarea></div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const text = "inkFrame";
+        const el = document.getElementById("typewriter");
+        let i = 0, isDeleting = false;
+
+        function type() {
+            if (!isDeleting) {
+                el.textContent = text.substring(0, i + 1);
+                i++;
+                if (i > text.length) {
+                    isDeleting = true;
+                    setTimeout(type, 1200); return;
+                }
+            } else {
+                el.textContent = text.substring(0, i - 1);
+                i--;
+                if (i < 0) isDeleting = false;
+            }
+            setTimeout(type, isDeleting ? 80 : 150);
+        }
+        type();
+
+        // Chat widget behavior
+        document.addEventListener('DOMContentLoaded', function () {
+            const chatWidget = document.getElementById('chatWidget');
+            const closeChat = document.getElementById('closeChat');
+            closeChat.addEventListener('click', function (e) {
+                e.stopPropagation();
+                chatWidget.classList.add('hidden');
+            });
+            chatWidget.addEventListener('click', function (e) {
+                if (e.target !== closeChat) {
+                    const modal = new bootstrap.Modal(document.getElementById('chatModal'));
+                    modal.show();
+                }
+            });
+            let lastScrollTop = 0;
+
+        });
+    </script>
+</body>
+
+
+
+</html>
